@@ -33,26 +33,19 @@ fn main() {
 
     let trimmed_string = s.trim();
     let mut number_of_masses :usize = 0;
+    let mut cumulative_fuel: u32 = 0;
 
     match trimmed_string.parse::<usize>()
     {
         Ok(i) => number_of_masses = i,
         Err(..) => println!("this is not an integer: {}", trimmed_string),
     };
-
-    let mut mass_list: Vec<u32> = Vec::new();
     
     for i in 0..number_of_masses
     {
         let mass :u32 = read_mass_input(i);
-        mass_list.push(mass);
+        cumulative_fuel += fuel_required(mass);
     }
 
-    let mut cumulative_fuel = 0;
-
-    for mass in mass_list.iter()
-    {
-        cumulative_fuel += fuel_required(*mass);
-    }
     println!("necessary fuel: {}", cumulative_fuel);
 }

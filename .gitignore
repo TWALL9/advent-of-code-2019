@@ -1,4 +1,5 @@
-/target
+day1/target
 **/*.rs.bk
 *.o
 *.bin
+*.lock
